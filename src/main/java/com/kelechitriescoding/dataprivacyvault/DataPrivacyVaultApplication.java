@@ -1,4 +1,4 @@
-package com.kelechitriescoding.dataPrivacyVault;
+package com.kelechitriescoding.dataprivacyvault;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
