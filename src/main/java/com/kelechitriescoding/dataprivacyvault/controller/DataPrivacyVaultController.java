@@ -20,7 +20,17 @@ public class DataPrivacyVaultController {
     @PostMapping("/encrypt")
     public ResponseEntity<?> encryptUser(@RequestBody UserDto userDto) {
         try {
-            return new ResponseEntity<>(encryptionService.encryptUser(userDto), HttpStatus.OK);
+            return new ResponseEntity<>(encryptionService.encryptUser(userDto,"password"), HttpStatus.OK);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/decrypt")
+    public ResponseEntity<?> decryptUser(@RequestBody UserDto userDto) {
+        try {
+            return new ResponseEntity<>(encryptionService.decryptUser(userDto,"password"), HttpStatus.OK);
         } catch (Exception e) {
             log.error(e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
